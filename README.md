@@ -2,6 +2,14 @@
 
 Junction Hackathon 2021 competition entry.
 
+## Commands
+
+### Start dev environment
+
+```sh
+docker-compose up --build
+```
+
 ## Specifications
 
 ### API structure

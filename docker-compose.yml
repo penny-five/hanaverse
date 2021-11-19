@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  server:
+    container_name: hanaverse-api
+    build:
+      context: ./packages/@hanaverse-api
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      PORT: 3000
+    ports:
+      - 127.0.0.1:7080:3000
+    depends_on:
+      - database
+
+  database:
+    container_name: hanaverse-database
+    image: postgres:13.4-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: hanaverse
+      POSTGRES_PASSWORD: hanaverse
+      POSTGRES_DB: hanaverse-db
+    ports:
+      - 127.0.0.1:7090:5432
+    volumes:
+      - "db:/var/lib/postgresql/data"
+
+volumes:
+  db:
+    driver: local
