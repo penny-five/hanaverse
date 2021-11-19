@@ -1,24 +1,45 @@
 # hanaverse-client
 
-React & react-konva
+React & react-konva app
+
+## Local development with yarn
 
 Local development
-`yarn && yarn start`
+
+```
+yarn start
+```
+
+## Local docker image for docker-compose
 
 Build docker container
-`docker build -t hanaverse-client .`
+
+```
+docker build -t hanaverse-client .
+```
 
 Test container locally
-`docker run -p 8080:80 -it --rm hanaverse-client`
 
-Login to Heroku
-`heroku login`
+```
+docker run -p 8080:80 -it --rm hanaverse-client
+```
 
-Login to Heroku container
-`heroku container:login`
+## Deploy to Netlify
 
-Push container to Heroku
-`heroku container:push hanaverse-client --app hanaverse-client`
+Build React app
 
-Deploy pushed container to Heroku
-`heroku container:release hanaverse-client --app hanaverse-client`
+```
+yarn build
+```
+
+Login to Netlify
+
+```
+netlify login
+```
+
+Deploy built site to Heroku
+
+```
+netlify deploy --dir ./build --prod
+```

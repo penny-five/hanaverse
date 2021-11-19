@@ -1,3 +1,6 @@
 node_modules
 *.log
 *.code-workspace
+
+# Local Netlify folder
+.netlify
