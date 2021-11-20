@@ -1,5 +1,5 @@
 import React from "react";
-import GameCanvas from "../GameCanvas";
+import GameCanvas from "../canvas/GameCanvas";
 import HananoidMoodMeter from "../HananoidMoodMeter";
 import VillageNamePanel from "../VillageNamePanel";
 import WaterConsumptionChart from "../WaterConsumptionChart";

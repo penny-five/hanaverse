@@ -3,7 +3,7 @@ import CanvasHananoid from "./CanvasHananoid";
 
 const HananoidCanvasSprites = ({ hananoids, happy }) => {
   return hananoids.map((hananoid) => {
-    return <CanvasHananoid color={hananoid.color} happy />;
+    return <CanvasHananoid color={hananoid.color} happy={happy} />;
   });
 };
 
