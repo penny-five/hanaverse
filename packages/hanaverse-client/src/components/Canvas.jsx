@@ -7,7 +7,7 @@ const GameCanvas = () => {
   return (
     <Stage width={window.innerWidth} height={window.innerHeight}>
       <Layer>
-        <Background widthInTiles={10} heightInTiles={10} />
+        <Background widthInTiles={10} heightInTiles={10} tileWidthPx={64} tileHeightPx={64} />
       </Layer>
     </Stage>
   );

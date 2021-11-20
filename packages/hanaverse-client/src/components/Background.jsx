@@ -30,7 +30,6 @@ const Background = (props) => {
   const tilemap = (Array(widthInTiles)
     .fill()
     .map((_, x) => {
-      console.log(x);
       return Array(heightInTiles)
         .fill()
         .map((_, y) => {
@@ -47,9 +46,7 @@ const Background = (props) => {
             />
           );
         });
-    })).flat();;
-
-  console.log(tilemap);
+    })).flat();
 
   return tilemap;
 };
