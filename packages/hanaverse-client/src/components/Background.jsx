@@ -2,32 +2,27 @@ import React from "react";
 
 import Tile from "./Tile";
 
-import grass from "../resources/grass.png";
-import puddle from "../resources/puddle.png";
-
-const TILETYPES = ["grass", "puddle"];
+const TILETYPES = [
+  "grass1",
+  "grass2",
+  "grass3",
+  "ponds",
+  "field",
+  // "desert",
+  // "desertgrass1",
+  // "desertgrass2",
+];
 
 const Background = (props) => {
-  const {widthInTiles, heightInTiles, tileWidthPx, tileHeightPx} = props;
-
-  // const grass = <LoadingImage url={`${process.env.PUBLIC_URL + '/tiles/grass.png'}`} />;
-  // const puddle = <LoadingImage url={`${process.env.PUBLIC_URL + '/tiles/puddle.png'}`} />;
+  const { widthInTiles, heightInTiles, tileWidthPx, tileHeightPx } = props;
 
   const resolveTileImage = (tileType) => {
     let image = new Image();
-    switch (tileType) {
-      case "grass":
-        image.src = grass;
-        return image;
-      case "puddle":
-        image.src = puddle;
-        return image;
-      default:
-        throw Error("Unknown tile type ", tileType);
-    }
+    image.src = `${process.env.PUBLIC_URL + `/tiles/${tileType}.png`}`;
+    return image;
   };
 
-  const tilemap = (Array(widthInTiles)
+  const tilemap = Array(widthInTiles)
     .fill()
     .map((_, x) => {
       return Array(heightInTiles)
@@ -35,7 +30,7 @@ const Background = (props) => {
         .map((_, y) => {
           return (
             <Tile
-              key={`${x}${y}`}
+              key={`${x} ${y}`}
               x={x}
               y={y}
               width={tileWidthPx}
@@ -46,7 +41,8 @@ const Background = (props) => {
             />
           );
         });
-    })).flat();
+    })
+    .flat();
 
   return tilemap;
 };
