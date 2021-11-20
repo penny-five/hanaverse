@@ -6,19 +6,16 @@ import { useState } from "react";
 
 import "./App.css";
 import BottomNavBar from "./components/BottomNavbar";
-import GameCanvas from "./components/Canvas";
 import HananoidsPage from "./components/pages/Hananoids";
 import InfoPage from "./components/pages/Info";
 import StatisticsPage from "./components/pages/Statistics";
-import VillageNamePanel from "./components/VillageNamePanel";
 
 Chart.register(annotationPlugin);
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("info");
+  const [currentPage, setCurrentPage] = useState("stats");
 
   const onSelectPage = (page) => {
-    console.log(page);
     setCurrentPage(page);
   };
 
@@ -32,12 +29,8 @@ function App() {
         <div className="sensor"></div>
         <div className="speaker"></div>
         <div className="screen">
-          <div className="contentWrapper">
-            <div className="canvasWrapper">
-              <GameCanvas />
-            </div>
-            <VillageNamePanel name="Yolo Village" />
-            <div className="pageWrapper">
+          <div className="pageWrapper">
+            <div className="contentWrapper">
               {currentPage === "stats" && <StatisticsPage />}
               {currentPage === "hananoids" && <HananoidsPage />}
               {currentPage === "info" && <InfoPage />}
