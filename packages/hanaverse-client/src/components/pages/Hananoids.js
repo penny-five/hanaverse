@@ -6,7 +6,7 @@ import "./Hananoids.css";
 const HananoidsPage = () => {
   return (
     <div className="hananoidsPage">
-      <h1>Hananoids</h1>
+      <h2>My Hananoids</h2>
       <ul className="hananoidsList">
         <HananoidItem name="Bongo" color="green" age={10} />
         <HananoidItem name="Bongo" color="red" age={10} />
