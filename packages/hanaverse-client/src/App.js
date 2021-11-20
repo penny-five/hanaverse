@@ -59,7 +59,11 @@ function App() {
           )}
           {currentVillage && (
             <div className="navbarWrapper">
-              <BottomNavBar currentPage={currentPage} onSelect={(page) => onSelectPage(page)} />
+              <BottomNavBar
+                currentPage={currentPage}
+                village={currentVillage}
+                onSelect={(page) => onSelectPage(page)}
+              />
             </div>
           )}
         </div>
