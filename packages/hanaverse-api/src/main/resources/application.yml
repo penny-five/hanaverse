@@ -2,12 +2,15 @@ spring:
   application:
     name: hanaverse-api
   datasource:
-    url: jdbc:postgresql://wapcwtycyayjfc:a32710045c698c0008a5b6d6907c0504d0a3bb9ae86df279b89d7441d819dbb2@ec2-35-168-80-116.compute-1.amazonaws.com:5432/d6hbfl7hk6f5te
+    url: jdbc:postgresql://localhost:7090/hanaverse-db
     username: hanaverse
-    password: hanaverse
+    password:
     hikari:
       poolName: Hikari
       auto-commit: false
+      data-source-properties:
+        socketFactory: com.google.cloud.sql.postgres.SocketFactory
+        cloudSqlInstance: hanaverse:europe-north1:hanaverse
   jpa:
     show-sql: true
   liquibase.change-log:
