@@ -27,6 +27,7 @@ dependencies {
     kapt("org.mapstruct:mapstruct-processor:1.4.2.Final")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("com.h2database:h2")
+    implementation("com.google.cloud.sql:postgres-socket-factory:1.4.0")
 }
 
 tasks.withType<KotlinCompile> {
