@@ -1,0 +1,7 @@
+.statisticsPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  width: 100%;
+  padding: 10px 20px;
+}
