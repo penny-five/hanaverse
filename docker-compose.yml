@@ -4,11 +4,12 @@ services:
   server:
     container_name: hanaverse-api
     build:
-      context: ./packages/@hanaverse-api
+      context: ./packages/hanaverse-api
       dockerfile: Dockerfile
     restart: always
     environment:
       PORT: 3000
+      SPRING_DATASOURCE_URL: jdbc:postgresql://hanaverse-database:5432/hanaverse-db
     ports:
       - 127.0.0.1:7080:3000
     depends_on:
