@@ -4,7 +4,7 @@ React & react-konva app
 
 ## Local development with yarn
 
-Local development
+Local development in http://localhost:3000
 
 ```
 yarn start
@@ -18,7 +18,7 @@ Build docker container
 docker build -t hanaverse-client .
 ```
 
-Test container locally
+Test container locally in http://localhost:8000
 
 ```
 docker run -p 8080:80 -it --rm hanaverse-client
@@ -38,7 +38,7 @@ Login to Netlify
 netlify login
 ```
 
-Deploy built site to Heroku
+Deploy built site to Netlify https://hanaverse-client.netlify.app/
 
 ```
 netlify deploy --dir ./build --prod

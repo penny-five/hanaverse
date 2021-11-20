@@ -9,14 +9,17 @@ import com.hanaverse.repository.HouseRepository
 import com.hanaverse.repository.WaterConsumptionRepository
 import com.hanaverse.service.dto.DatasetDTO
 import com.hanaverse.service.dto.VillageDTO
+import com.hanaverse.service.dto.WaterConsumptionDTO
 import com.hanaverse.service.enum.WeatherForecast
 import com.hanaverse.service.mapper.VillageMapper
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
+import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.*
 import javax.persistence.EntityNotFoundException
 
+private const val DAILY_LIMIT_PER_PERSON = 30
 
 @Service
 class VillageService(
@@ -33,8 +36,9 @@ class VillageService(
         val house = houseRepository.findById(id)
             .orElseThrow { EntityNotFoundException("House not found") }
         val village = villageMapper.toDto(house)
-        village.hananoidHappiness = calculateHappiness()
-        village.weatherForecast = calculateWeather()
+        val currentConsumption = village.waterConsumptionHistory.find { it.date == LocalDate.now() }
+        village.hananoidHappiness = calculateHappiness(currentConsumption)
+        village.weatherForecast = calculateWeather(currentConsumption)
 
         return village
     }
@@ -70,17 +74,44 @@ class VillageService(
         house.hananoids.add(createHananoid(house))
 
         val village = villageMapper.toDto(house)
-        village.hananoidHappiness = calculateHappiness()
-        village.weatherForecast = calculateWeather()
+        val currentConsumption = village.waterConsumptionHistory.find { it.date == LocalDate.now() }
+        village.hananoidHappiness = calculateHappiness(currentConsumption)
+        village.weatherForecast = calculateWeather(currentConsumption)
 
         return village
     }
 
-    private fun calculateHappiness(): Double {
-        return 0.5
+    private fun calculateHappiness(waterConsumption: WaterConsumptionDTO?): Double {
+        if (waterConsumption == null) {
+            return 1.0
+        }
+
+        if (waterConsumption.liters!! >= DAILY_LIMIT_PER_PERSON) {
+            return 0.0
+        }
+
+        return waterConsumption.liters!! / DAILY_LIMIT_PER_PERSON
     }
 
-    private fun calculateWeather(): WeatherForecast {
+    private fun calculateWeather(waterConsumption: WaterConsumptionDTO?): WeatherForecast {
+        if (waterConsumption == null) {
+            return WeatherForecast.HEAVY_RAIN
+        }
+
+        if (waterConsumption.liters!! >= DAILY_LIMIT_PER_PERSON) {
+            return WeatherForecast.BURNING_HOT
+        }
+
+        val consumedQuota = waterConsumption.liters!! / DAILY_LIMIT_PER_PERSON
+
+        if (consumedQuota > 0.5) {
+            return WeatherForecast.CLOUDY
+        }
+
+        if (consumedQuota > 0.25) {
+            return WeatherForecast.MILD_RAIN
+        }
+
         return WeatherForecast.HEAVY_RAIN
     }
 
