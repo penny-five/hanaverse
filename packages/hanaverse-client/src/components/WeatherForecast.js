@@ -1,5 +1,4 @@
 import React from "react";
-import classNames from "classnames";
 
 import { ReactComponent as BurningHotIcon } from "../resources/weather-burning-hot.svg";
 import { ReactComponent as CloudyIcon } from "../resources/weather-cloudy.svg";
