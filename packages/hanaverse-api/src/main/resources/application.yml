@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: hanaverse-api
+  datasource:
+    url: jdbc:postgresql://localhost:7090/hanaverse-db
+    username: hanaverse
+    password: hanaverse
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+  jpa:
+    show-sql: true
+
+server:
+  port: 3000
