@@ -8,7 +8,13 @@ const GameCanvas = ({ village }) => {
   return (
     <Stage width={448} height={448}>
       <Layer>
-        <Background widthInTiles={14} heightInTiles={14} tileWidthPx={32} tileHeightPx={32} />
+        <Background
+          weather={village.weatherForecast}
+          widthInTiles={14}
+          heightInTiles={14}
+          tileWidthPx={32}
+          tileHeightPx={32}
+        />
       </Layer>
       <Layer>
         <HananoidCanvasSprites hananoids={village.hananoids} />
