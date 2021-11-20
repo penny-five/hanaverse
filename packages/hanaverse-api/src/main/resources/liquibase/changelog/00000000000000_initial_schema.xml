@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+
+  <changeSet id="00000000000000" author="jhipster">
+    <createSequence sequenceName="sequence_generator" startValue="50" incrementBy="1"/>
+  </changeSet>
+
+  <changeSet id="00000000000001" author="jhipster">
+    <createTable tableName="house">
+      <column name="id" type="bigint">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column name="name" type="varchar(50)"/>
+      <column name="residents" type="integer"/>
+    </createTable>
+
+    <createTable tableName="hananoid">
+      <column name="id" type="bigint">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column name="name" type="varchar(50)"/>
+      <column name="color" type="varchar(50)"/>
+      <column name="created" type="timestamp"/>
+      <column name="house_id" type="bigint"/>
+    </createTable>
+
+    <createTable tableName="water_consumption">
+      <column name="id" type="bigint">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column name="liters" type="double"/>
+      <column name="date" type="timestamp"/>
+      <column name="house_id" type="bigint"/>
+    </createTable>
+
+    <addForeignKeyConstraint baseColumnNames="house_id"
+      baseTableName="hananoid"
+      constraintName="fk_hananoid_house_id"
+      referencedColumnNames="id"
+      referencedTableName="house"/>
+
+    <addForeignKeyConstraint baseColumnNames="house_id"
+      baseTableName="water_consumption"
+      constraintName="fk_water_consumption_house_id"
+      referencedColumnNames="id"
+      referencedTableName="house"/>
+  </changeSet>
+</databaseChangeLog>
