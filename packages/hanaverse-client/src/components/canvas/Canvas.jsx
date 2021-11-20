@@ -2,23 +2,17 @@ import { React, useMemo } from "react";
 import { Stage, Layer } from "react-konva";
 
 import Background from "./Background";
-import { generatePropLocations, generateHananoidLocations } from "../../utils/canvas";
+import { generateHananoidLocations } from "../../utils/canvas";
 import Hananoids from "./Hananoids";
-import Props from "./Props";
 
 const GRID_WIDTH = 14; // tiles
 const GRID_HEIGHT = 14;
 const TILE_SIZE = 32;
 
 const Canvas = ({ village }) => {
-  const propLocations = useMemo(
-    () => generatePropLocations(village.hananoids.length, GRID_WIDTH, GRID_HEIGHT),
-    [village]
-  );
-
   const hananoidLocations = useMemo(
-    () => generateHananoidLocations(propLocations, village.hananoids, GRID_WIDTH, GRID_HEIGHT),
-    [village, propLocations]
+    () => generateHananoidLocations([], village.hananoids, GRID_WIDTH, GRID_HEIGHT),
+    [village]
   );
 
   return (
@@ -31,9 +25,6 @@ const Canvas = ({ village }) => {
           tileWidthPx={TILE_SIZE}
           tileHeightPx={TILE_SIZE}
         />
-      </Layer>
-      <Layer>
-        <Props coordinates={propLocations} />
       </Layer>
       <Layer>
         <Hananoids
