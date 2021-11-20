@@ -49,3 +49,14 @@
   left: 0;
 }
 
+.loadingScreen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+}
+
+
+.loadingScreen h2 {
+  font-size: 3rem;
+}

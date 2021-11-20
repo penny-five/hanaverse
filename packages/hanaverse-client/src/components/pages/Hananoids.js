@@ -4,20 +4,21 @@ import VillageNamePanel from "../VillageNamePanel";
 
 import "./Hananoids.css";
 
-const HananoidsPage = () => {
+const HananoidsPage = ({ village }) => {
   return (
     <div>
-      <VillageNamePanel name="Yolo Village" />
+      <VillageNamePanel name={village.villageName} />
       <div className="hananoidsPage">
         <h2>My Hananoids</h2>
         <ul className="hananoidsList">
-          <HananoidItem name="Bongo" color="green" age={10} />
-          <HananoidItem name="Bongo" color="red" age={10} />
-          <HananoidItem name="Bongo" color="red" age={10} />
-          <HananoidItem name="Bongo" color="green" age={10} />
-          <HananoidItem name="Bongo" color="green" age={10} />
-          <HananoidItem name="Bongo" color="green" age={10} />
-          <HananoidItem name="Bongo" color="green" age={10} />
+          {village.hananoids.map((hananoid) => (
+            <HananoidItem
+              key={hananoid.name}
+              name={hananoid.name}
+              color={hananoid.color}
+              age={hananoid.age}
+            />
+          ))}
         </ul>
       </div>
     </div>
