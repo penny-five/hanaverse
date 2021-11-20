@@ -17,6 +17,7 @@ const HananoidsPage = ({ village }) => {
               name={hananoid.name}
               color={hananoid.color}
               age={hananoid.age}
+              mood={village.hananoidHappiness >= 0.5 ? "happy" : "sad"}
             />
           ))}
         </ul>
