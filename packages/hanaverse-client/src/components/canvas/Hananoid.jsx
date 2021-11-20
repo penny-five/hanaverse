@@ -1,10 +1,8 @@
 import { useRef, useEffect } from "react";
 import { Sprite } from "react-konva";
 
-const CanvasHananoid = ({ color, happy }) => {
+const Hananoid = ({ color, happy, location }) => {
   const spriteRef = useRef(null);
-
-  const randomCoordinate = () => Math.round(Math.random() * 13) * 32;
 
   const resolveImage = () => {
     let image = new window.Image();
@@ -21,8 +19,8 @@ const CanvasHananoid = ({ color, happy }) => {
   return (
     <Sprite
       ref={spriteRef}
-      x={randomCoordinate()}
-      y={randomCoordinate()}
+      x={location.x}
+      y={location.y}
       image={resolveImage()}
       animation="bouncing"
       animations={{
@@ -35,4 +33,4 @@ const CanvasHananoid = ({ color, happy }) => {
   );
 };
 
-export default CanvasHananoid;
+export default Hananoid;
