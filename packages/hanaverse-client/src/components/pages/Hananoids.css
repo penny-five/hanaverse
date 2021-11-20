@@ -7,8 +7,8 @@
 }
 
 .hananoidsList {
-    display: flex;
-      flex-direction: column;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-      justify-content: stretch;
+  justify-content: stretch;
 }
