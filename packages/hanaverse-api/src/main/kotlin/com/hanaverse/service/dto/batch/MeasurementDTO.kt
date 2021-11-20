@@ -1,9 +1,12 @@
 package com.hanaverse.service.dto.batch
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import java.time.LocalDate
 
 open class MeasurementDTO(
-    var Consumption: Long,
+    @get: JsonProperty("Consumption")
+    var consumption: Double? = null,
 
-    var TimeStamp: LocalDate
+    @get: JsonProperty("TimeStamp")
+    var timestamp: LocalDate? = null
 )
