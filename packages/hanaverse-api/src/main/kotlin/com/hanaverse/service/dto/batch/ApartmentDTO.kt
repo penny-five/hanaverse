@@ -1,15 +1,22 @@
 package com.hanaverse.service.dto.batch
 
+import com.fasterxml.jackson.annotation.JsonProperty
+
 open class ApartmentDTO(
-    var people: Int,
+    var people: Int? = null,
 
-    var Hydractiva_shower: SmartDeviceDTO,
+    @get: JsonProperty("Hydractiva_shower")
+    var hydractivaShower: SmartDeviceDTO? = null,
 
-    var Kitchen_optima_faucet: SmartDeviceDTO,
+    @get: JsonProperty("Kitchen_optima_faucet")
+    var kitchenFaucet: SmartDeviceDTO? = null,
 
-    var Optima_faucet: SmartDeviceDTO,
+    @get: JsonProperty("Optima_faucet")
+    var optimaFaucet: SmartDeviceDTO? = null,
 
-    var Washing_machine: SmartDeviceDTO,
+    @get: JsonProperty("Washing_machine")
+    var washingMachine: SmartDeviceDTO? = null,
 
-    var Dishwasher: SmartDeviceDTO
+    @get: JsonProperty("Dishwasher")
+    var dishwasher: SmartDeviceDTO? = null
 )

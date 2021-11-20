@@ -11,18 +11,22 @@ import com.hanaverse.service.dto.DatasetDTO
 import com.hanaverse.service.dto.VillageDTO
 import com.hanaverse.service.dto.WaterConsumptionDTO
 import com.hanaverse.service.dto.batch.DatasetBatchDTO
+import com.hanaverse.service.dto.batch.MeasurementDTO
 import com.hanaverse.service.enum.WeatherForecast
 import com.hanaverse.service.mapper.VillageMapper
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.*
 import javax.persistence.EntityNotFoundException
 
+
 private const val DAILY_LIMIT_PER_PERSON = 30
 
 @Service
+@Transactional
 class VillageService(
     private val houseRepository: HouseRepository,
     private val waterConsumptionRepository: WaterConsumptionRepository,
@@ -96,6 +100,12 @@ class VillageService(
         return village
     }
 
+    fun createHananoid(id: Long) {
+        val house = houseRepository.findById(id)
+            .orElseThrow { EntityNotFoundException("House not found") }
+        createHananoid(house)
+    }
+
     fun uploadData(datasetBatchDTO: DatasetBatchDTO) {
         val id = 1
         datasetBatchDTO.houses.forEach { house ->
@@ -106,13 +116,44 @@ class VillageService(
                 )
                 houseRepository.save(newHouse)
 
-                for (i in 1..apartment.people) {
+                for (i in 1..apartment.people!!) {
                     newHouse.hananoids.add(createHananoid(newHouse))
                 }
 
-                val dishwasher = apartment.Dishwasher.measurements.groupBy { it.TimeStamp }
-                val asdf = apartment.Hydractiva_shower.measurements.groupBy { it.TimeStamp }
+                val shower = apartment.hydractivaShower!!.measurements.groupBy { it.timestamp!! }
+                val kitchenFaucet =
+                    apartment.kitchenFaucet!!.measurements.groupBy { it.timestamp!! }
+                val optimaFaucet = apartment.optimaFaucet!!.measurements.groupBy { it.timestamp!! }
+                val washingMachine =
+                    apartment.washingMachine!!.measurements.groupBy { it.timestamp!! }
+                val dishwasher = apartment.dishwasher!!.measurements.groupBy { it.timestamp!! }
+
+                val combined = shower.toMutableMap()
+                mergeMap(combined, kitchenFaucet)
+                mergeMap(combined, optimaFaucet)
+                mergeMap(combined, washingMachine)
+                mergeMap(combined, dishwasher)
+
+                combined.forEach { (date, measurements) ->
+                    val waterConsumption = WaterConsumption(
+                        liters = measurements.sumOf { it.consumption!! },
+                        date = date,
+                        house = newHouse
+                    )
+                    waterConsumptionRepository.save(waterConsumption)
+                }
             }
+        }
+    }
+
+    private fun mergeMap(
+        combined: MutableMap<LocalDate, List<MeasurementDTO>>,
+        new: Map<LocalDate, List<MeasurementDTO>>
+    ) {
+        new.forEach { (k, v) ->
+            combined.merge(
+                k, v
+            ) { v1, v2 -> v1 + v2 }
         }
     }
 
@@ -154,7 +195,7 @@ class VillageService(
         val hananoid = Hananoid(
             name = generateName(),
             color = HananoidColor.values()[rand.nextInt(HananoidColor.values().size)].toString(),
-            created = LocalDateTime.now(),
+            created = LocalDateTime.now().minusDays((0..10).random().toLong()),
             house = house
         )
         return hananoidRepository.save(hananoid)
