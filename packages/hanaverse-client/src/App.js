@@ -21,13 +21,13 @@ function App() {
     document.title = "HanaWorld";
   }, []);
 
-  const villegeId = new URLSearchParams(window.location.search).get("id") || 1;
+  const villageId = new URLSearchParams(window.location.search).get("id") || 1;
 
   useEffect(() => {
-    api.fetchVillage(villegeId).then((res) => {
+    api.fetchVillage(villageId).then((res) => {
       setCurrentVillage(res);
     });
-  }, [villegeId]);
+  }, [villageId]);
 
   const onSelectPage = (page) => {
     setCurrentPage(page);
