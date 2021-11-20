@@ -14,4 +14,4 @@ spring:
     classpath:liquibase/master.xml
 
 server:
-  port: 3000
+  port: ${PORT:3000}
