@@ -14,7 +14,7 @@ import java.security.Principal
 @RequestMapping("/village")
 class VillageController(private val villageService: VillageService) {
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/state")
     fun getVillageStatus(
         @PathVariable id: Long,
         principal: Principal?
