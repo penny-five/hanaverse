@@ -9,6 +9,9 @@ indent_style = space
 [*.{js,json,ts}]
 tab_width = 2
 
+[*.{js,json,css}]
+tab_width = 2
+
 [*.md]
 tab_width = 2
 

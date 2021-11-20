@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import '~sanitize.css';
+@import '~sanitize.css/forms.css';
+@import '~sanitize.css/typography.css';
+
+:root {
+  --color-black-100: #302D43;
+  --color-mint-200: #44BFB8;
+  --bottom-navbar-height: 70px;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  color: var(--color-black-100);
+  font-family: 'Fredoka One', cursive;
+}
+
+h1 {
+  margin: 1rem 0;
+  font-size: 2.4rem;
+  color: var(--color-mint-200);
+  text-shadow: -1px 1px 0 var(--color-black-100), 1px 1px 0 var(--color-black-100), 1px -1px 0 var(--color-black-100), -1px -1px 0 var(--color-black-100);
+  letter-spacing: 0.2rem;
+}
+
+h2 {
+  margin: 1rem 0;
+  font-size: 2.1rem;
+  color: #F5F5F5;
+  text-shadow: -1px 1px 0 var(--color-black-100), 1px 1px 0 var(--color-black-100), 1px -1px 0 var(--color-black-100), -1px -1px 0 var(--color-black-100);
+  letter-spacing: 0.1rem;
+}
+
+p {
+  margin: 1rem 0;
+  font-size: 1.6rem;
+  color: var(--color-black-100);
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
