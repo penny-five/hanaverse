@@ -1,0 +1,21 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 3px 6px;
+  min-width: 30px;
+
+  background: #44bfb8;
+  /* Black-100 */
+
+  border: 2px solid #302d43;
+  box-sizing: border-box;
+  box-shadow: inset 0px 0px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 9px;
+
+  color: white;
+
+  text-shadow: -1px 1px 0 var(--color-black-100), 1px 1px 0 var(--color-black-100),
+    1px -1px 0 var(--color-black-100), -1px -1px 0 var(--color-black-100);
+}

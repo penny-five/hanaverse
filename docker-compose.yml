@@ -28,13 +28,13 @@ services:
     volumes:
       - "db:/var/lib/postgresql/data"
 
-  client:
-    container_name: hanaverse-client
-    build:
-      context: ./packages/hanaverse-client
-      dockerfile: Dockerfile
-    ports:
-      - 127.0.0.1:8080:80
+  # client:
+  #   container_name: hanaverse-client
+  #   build:
+  #     context: ./packages/hanaverse-client
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 127.0.0.1:8080:80
 
 volumes:
   db:

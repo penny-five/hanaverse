@@ -2,7 +2,7 @@
   width: 100%;
   height: var(--bottom-navbar-height);
 
-  background: linear-gradient(#7B61FF,#432AC2);
+  background: linear-gradient(#7b61ff, #432ac2);
   border-top: 2px solid var(--color-black-100);
 }
 
@@ -16,13 +16,20 @@
   align-items: center;
   justify-content: center;
   flex-grow: 1;
+  position: relative;
 }
 
 .bottomNavbar .item.selected {
-  background: linear-gradient(#432AC2,#7B61FF);
-  box-shadow: inset 0 -4px 3px rgba(255, 255, 255,0.2),inset 0 4px 3px rgba(255, 255, 255,0.2);
+  background: linear-gradient(#432ac2, #7b61ff);
+  box-shadow: inset 0 -4px 3px rgba(255, 255, 255, 0.2), inset 0 4px 3px rgba(255, 255, 255, 0.2);
 }
 
 .bottomNavbar .item:not(:first-child) {
   border-left: 2px solid var(--color-black-100);
+}
+
+.bottomNavbar .hananoidBadge {
+  position: absolute;
+  top: 10px;
+  right: 15px;
 }
