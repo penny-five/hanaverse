@@ -17,14 +17,7 @@
 
 .contentWrapper {
   flex-grow: 1;
-
-  margin: auto;
   width: 100%;
-
-  overflow-y: scroll;
-  overflow-x: hidden;
-
-  margin-bottom: var(--bottom-navbar-height);
 }
 
 .canvasWrapper {
@@ -38,10 +31,15 @@
 
   flex-grow: 1;
 
-  min-height: 500px;
+  min-height: calc(100% - var(--bottom-navbar-height));
 
   background: url(./resources/background.png);
   background-repeat: repeat;
+
+  margin-bottom: var(--bottom-navbar-height);
+
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .navbarWrapper {
@@ -51,3 +49,14 @@
   left: 0;
 }
 
+.loadingScreen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+}
+
+
+.loadingScreen h2 {
+  font-size: 3rem;
+}
