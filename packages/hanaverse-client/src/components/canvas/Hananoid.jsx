@@ -4,6 +4,10 @@ import { Sprite } from "react-konva";
 const Hananoid = ({ color, happy, location }) => {
   const spriteRef = useRef(null);
 
+    if (color === "YELLOW") {
+    color = "ORANGE"; // kiitos Arttu
+  }
+
   const resolveImage = () => {
     let image = new window.Image();
     image.src = `${
