@@ -41,6 +41,12 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
+tasks {
+    withType<Copy> {
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    }
+}
+
 tasks.withType<Jar> {
     manifest {
         attributes["Main-Class"] = "com.hanaverse.HanaverseApplication"
