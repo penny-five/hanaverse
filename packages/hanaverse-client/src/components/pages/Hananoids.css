@@ -1,0 +1,14 @@
+.hananoidsPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  width: 100%;
+  padding: 20px 20px;
+}
+
+.hananoidsList {
+    display: flex;
+      flex-direction: column;
+  width: 100%;
+      justify-content: stretch;
+}
