@@ -90,7 +90,7 @@ class VillageService(
         )
         houseRepository.save(house)
 
-        house.hananoids.add(createHananoid(house))
+        house.hananoids.add(createHananoid(house, LocalDateTime.now()))
 
         val village = villageMapper.toDto(house)
         val currentConsumption = village.waterConsumptionHistory.find { it.date == LocalDate.now() }
@@ -103,21 +103,25 @@ class VillageService(
     fun createHananoid(id: Long) {
         val house = houseRepository.findById(id)
             .orElseThrow { EntityNotFoundException("House not found") }
-        createHananoid(house)
+        createHananoid(house, LocalDateTime.now().minusDays((0..10).random().toLong()))
     }
 
     fun uploadData(datasetBatchDTO: DatasetBatchDTO) {
-        val id = 1
         datasetBatchDTO.houses.forEach { house ->
-            house.apartments.forEach { apartment ->
+            house.apartments.forEachIndexed { index, apartment ->
                 val newHouse = House(
-                    name = "house$id",
+                    name = "house$index",
                     residents = apartment.people
                 )
                 houseRepository.save(newHouse)
 
                 for (i in 1..apartment.people!!) {
-                    newHouse.hananoids.add(createHananoid(newHouse))
+                    newHouse.hananoids.add(
+                        createHananoid(
+                            newHouse,
+                            LocalDateTime.now().minusDays((0..365).random().toLong())
+                        )
+                    )
                 }
 
                 val shower = apartment.hydractivaShower!!.measurements.groupBy { it.timestamp!! }
@@ -191,11 +195,11 @@ class VillageService(
         return WeatherForecast.HEAVY_RAIN
     }
 
-    private fun createHananoid(house: House): Hananoid {
+    private fun createHananoid(house: House, created: LocalDateTime): Hananoid {
         val hananoid = Hananoid(
             name = generateName(),
             color = HananoidColor.values()[rand.nextInt(HananoidColor.values().size)].toString(),
-            created = LocalDateTime.now().minusDays((0..10).random().toLong()),
+            created = created,
             house = house
         )
         return hananoidRepository.save(hananoid)

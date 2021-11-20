@@ -13,8 +13,8 @@ import javax.persistence.*
 class WaterConsumption(
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "consumptionSequenceGenerator")
+    @SequenceGenerator(name = "consumptionSequenceGenerator")
     var id: Long? = null,
 
     @NotNull
@@ -26,7 +26,7 @@ class WaterConsumption(
     var date: LocalDate? = null,
 
     @NotNull
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = [CascadeType.PERSIST, CascadeType.MERGE])
     var house: House? = null
 
 ) : Serializable {

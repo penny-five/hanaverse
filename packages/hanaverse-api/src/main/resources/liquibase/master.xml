@@ -17,5 +17,7 @@
 
   <include file="liquibase/changelog/00000000000000_initial_schema.xml"
     relativeToChangelogFile="false"/>
+  <include file="liquibase/changelog/00000000000001_add_sequence.xml"
+    relativeToChangelogFile="false"/>
 </databaseChangeLog>
   <!-- @formatter:on -->
