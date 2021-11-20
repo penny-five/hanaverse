@@ -1,0 +1,18 @@
+.bottomNavbar {
+  width: 100%;
+  height: var(--bottom-navbar-height);
+
+  background-color: white;
+}
+
+.bottomNavbar .itemWrapper {
+  display: flex;
+  height: 100%;
+}
+
+.bottomNavbar .item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
