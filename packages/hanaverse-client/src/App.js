@@ -1,8 +1,11 @@
+import { Canvas } from "konva/lib/Canvas";
 import "marvel-devices.css/assets/devices.min.css";
 import { useState } from "react";
+import { Layer } from "react-konva";
 
 import "./App.css";
 import BottomNavBar from "./components/BottomNavbar";
+import GameCanvas from "./components/Canvas";
 import HananoidsPage from "./components/pages/Hananoids";
 import InfoPage from "./components/pages/Info";
 import StatisticsPage from "./components/pages/Statistics";
@@ -26,7 +29,9 @@ function App() {
         <div className="speaker"></div>
         <div className="screen">
           <div className="contentWrapper">
-            <div className="canvasWrapper">{/* <GameCanvas /> */}</div>
+            <div className="canvasWrapper">
+              <GameCanvas />
+            </div>
             <div className="pageWrapper">
               {currentPage === "stats" && <StatisticsPage />}
               {currentPage === "hananoids" && <HananoidsPage />}
