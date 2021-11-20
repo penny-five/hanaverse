@@ -48,7 +48,7 @@ const MOCK_RESPONSE = {
 };
 
 const api = {
-  async fetchVillage(id: number) {
+  async fetchVillage(id) {
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     return MOCK_RESPONSE;
