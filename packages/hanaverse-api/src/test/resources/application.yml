@@ -7,3 +7,7 @@ spring:
     password:
     hikari:
       auto-commit: false
+  liquibase:
+    contexts: test
+    change-log:
+      classpath:liquibase/master.xml

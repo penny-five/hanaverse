@@ -14,7 +14,6 @@ interface HananoidMapper :
     EntityMapper<HananoidDTO, Hananoid> {
 
     @Mappings(
-        Mapping(source = "color", target = "color"),
         Mapping(source = "created", target = "ageDays", qualifiedByName = ["createdToAge"])
     )
     override fun toDto(entity: Hananoid): HananoidDTO
