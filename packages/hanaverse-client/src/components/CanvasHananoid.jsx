@@ -29,7 +29,7 @@ const CanvasHananoid = (props) => {
       animation="bouncing"
       animations={{
         // x, y, width, height (4 frames)
-        bouncing: [0, 0, 32, 44, 32, 0, 32, 44, 64, 0, 32, 44, 96, 0, 32, 44],
+        bouncing: [0, 0, 23, 32, 23, 0, 23, 32, 46, 0, 23, 32, 69, 0, 23, 32],
       }}
       frameRate={4}
       frameIndex={0}
