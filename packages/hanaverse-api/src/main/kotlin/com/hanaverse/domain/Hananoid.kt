@@ -1,9 +1,11 @@
 package com.hanaverse.domain
 
+import com.hanaverse.domain.enum.HananoidColor
 import com.sun.istack.NotNull
 import org.hibernate.annotations.Cache
 import org.hibernate.annotations.CacheConcurrencyStrategy
 import java.io.Serializable
+import java.time.LocalDateTime
 import javax.persistence.*
 
 @Entity
@@ -15,6 +17,19 @@ class Hananoid(
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
     var id: Long? = null,
+
+    @NotNull
+    @Column(length = 50, unique = true, nullable = false)
+    var name: String? = null,
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(length = 50, unique = true, nullable = false)
+    var color: HananoidColor? = null,
+
+    @NotNull
+    @Column(length = 50, unique = true, nullable = false)
+    var created: LocalDateTime? = null,
 
     @NotNull
     @ManyToOne(optional = false)
