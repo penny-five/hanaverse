@@ -22,7 +22,7 @@
 
 .canvasWrapper {
   width: 450px;
-  height: 450px;
+  height: 448px;
   background-color: white;
 }
 
@@ -55,7 +55,6 @@
   justify-content: center;
   min-height: 100%;
 }
-
 
 .loadingScreen h2 {
   font-size: 3rem;
