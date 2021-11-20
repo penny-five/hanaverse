@@ -9,7 +9,11 @@ const HananoidItem = ({ name, color, age, mood }) => {
       <Hananoid color={color} mood={mood} />
       <div className="content">
         <span className="name">{name}</span>
-        <span className="age">{age} days old</span>
+        {age > 0 ? (
+          <span className="age">{age} days old</span>
+        ) : (
+          <span className="age">Born today</span>
+        )}
       </div>
     </li>
   );
