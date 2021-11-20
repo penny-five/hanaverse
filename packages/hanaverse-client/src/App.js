@@ -18,10 +18,16 @@ function App() {
   const [currentVillage, setCurrentVillage] = useState(null);
 
   useEffect(() => {
-    api.fetchVillage(1).then((res) => {
+    document.title = "HanaWorld";
+  }, []);
+
+  const villegeId = new URLSearchParams(window.location.search).get("id") || 1;
+
+  useEffect(() => {
+    api.fetchVillage(villegeId).then((res) => {
       setCurrentVillage(res);
     });
-  }, []);
+  }, [villegeId]);
 
   const onSelectPage = (page) => {
     setCurrentPage(page);

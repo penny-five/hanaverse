@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const MOCK_RESPONSE = {
   householdSize: 3,
   villageName: "Hanaville",
@@ -47,11 +49,15 @@ const MOCK_RESPONSE = {
   ],
 };
 
+const client = axios.create({
+  baseURL: process.env.REACT_APP_API_URL,
+});
+
 const api = {
   async fetchVillage(id) {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    const res = await client.get(`village/${id}/state`);
 
-    return MOCK_RESPONSE;
+    return res.data;
   },
 };
 
