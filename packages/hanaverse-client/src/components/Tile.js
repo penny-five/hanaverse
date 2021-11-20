@@ -1,5 +1,0 @@
-const Tile = () => {
-    return (
-        <Image 
-    );
-};
