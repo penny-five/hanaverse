@@ -1,5 +1,6 @@
 import React from "react";
 
+import { selectRandomFrom } from "../../utils/canvas";
 import Tile from "./Tile";
 
 const GREEN_TILES = ["grass1", "grass2", "grass3", "ponds", "field"];
@@ -10,7 +11,8 @@ const Background = ({ weather, widthInTiles, heightInTiles, tileWidthPx, tileHei
   const resolveTileImage = () => {
     let image = new Image();
     const tileSet = weather === "BURNING_HOT" ? DRY_TILES : GREEN_TILES;
-    const tileName = tileSet[Math.round(Math.random() * (tileSet.length - 1))];
+    // const tileSet = GREEN_TILES;
+    const tileName = selectRandomFrom(tileSet);
     image.src = `${process.env.PUBLIC_URL + `/tiles/${tileName}.png`}`;
     return image;
   };

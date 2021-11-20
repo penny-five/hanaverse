@@ -11,7 +11,7 @@ const CanvasHananoid = ({ color, happy }) => {
 
   const resolveImage = () => {
     let image = new window.Image();
-    image.src = `${process.env.PUBLIC_URL + "/hananoids/blue-happy.png"}`;
+    image.src = `${process.env.PUBLIC_URL + `/hananoids/${color}-${happy ? "happy" : "sad"}.png`}`;
     return image;
   };
 

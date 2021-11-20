@@ -17,7 +17,10 @@ const GameCanvas = ({ village }) => {
         />
       </Layer>
       <Layer>
-        <HananoidCanvasSprites hananoids={village.hananoids} />
+        <HananoidCanvasSprites
+          hananoids={village.hananoids}
+          happy={village.hananoidHappiness >= 0.5 ? true : false}
+        />
       </Layer>
     </Stage>
   );
