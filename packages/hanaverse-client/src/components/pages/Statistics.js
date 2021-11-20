@@ -15,15 +15,15 @@ const StatisticsPage = ({ village }) => {
       </div>
       <VillageNamePanel name={village.villageName} />
       <div className="statisticsPage">
-        <div class="headerWrapper">
+        <div className="headerWrapper">
           <h2 className="title">Hananoid mood</h2>
         </div>
         <HananoidMoodMeter value={village.hananoidHappiness} />
-        <div class="headerWrapper">
+        <div className="headerWrapper">
           <h2 className="title">Weather forecast</h2>
         </div>
         <WeatherForecast weather={village.weatherForecast} />
-        <div class="headerWrapper">
+        <div className="headerWrapper">
           <h2 className="title">Water consumption</h2>
           <span>Liters per day</span>
         </div>
