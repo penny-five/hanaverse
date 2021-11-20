@@ -118,7 +118,7 @@ class VillageService(
     private fun createHananoid(house: House): Hananoid {
         val hananoid = Hananoid(
             name = generateName(),
-            color = HananoidColor.values()[rand.nextInt(HananoidColor.values().size)],
+            color = HananoidColor.values()[rand.nextInt(HananoidColor.values().size)].toString(),
             created = LocalDateTime.now(),
             house = house
         )
