@@ -4,12 +4,13 @@ import com.sun.istack.NotNull
 import org.hibernate.annotations.Cache
 import org.hibernate.annotations.CacheConcurrencyStrategy
 import java.io.Serializable
+import java.time.LocalDate
 import javax.persistence.*
 
 @Entity
-@Table(name = "house")
+@Table(name = "water_consumption")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-class House(
+class WaterConsumption(
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
@@ -18,25 +19,21 @@ class House(
 
     @NotNull
     @Column(length = 50, unique = true, nullable = false)
-    var name: String? = null,
+    var liters: Double? = null,
 
     @NotNull
     @Column(length = 50, unique = true, nullable = false)
-    var residents: Int? = null,
+    var date: LocalDate? = null,
 
-    @OneToMany(mappedBy = "house")
-    @Column(length = 50, unique = true, nullable = false)
-    var hananoids: MutableSet<Hananoid> = mutableSetOf(),
-
-    @OneToMany(mappedBy = "house")
-    @Column(length = 50, unique = true, nullable = false)
-    var waterConsumptionHistory: MutableSet<WaterConsumption> = mutableSetOf()
+    @NotNull
+    @ManyToOne(optional = false)
+    var house: House? = null
 
 ) : Serializable {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other !is House) return false
+        if (other !is WaterConsumption) return false
         if (other.id == null || id == null) return false
 
         return id == other.id
