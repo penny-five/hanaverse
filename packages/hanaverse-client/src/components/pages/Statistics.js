@@ -1,5 +1,5 @@
 import React from "react";
-import GameCanvas from "../canvas/GameCanvas";
+import Canvas from "../canvas/Canvas";
 import HananoidMoodMeter from "../HananoidMoodMeter";
 import VillageNamePanel from "../VillageNamePanel";
 import WaterConsumptionChart from "../WaterConsumptionChart";
@@ -7,30 +7,11 @@ import WeatherForecast from "../WeatherForecast";
 
 import "./Statistics.css";
 
-const MEASUREMENTS = [
-  {
-    date: "2021-01-01",
-    liters: 130,
-  },
-  {
-    date: "2021-01-01",
-    liters: 220,
-  },
-  {
-    date: "2021-01-01",
-    liters: 300,
-  },
-  {
-    date: "2021-01-01",
-    liters: 500,
-  },
-];
-
 const StatisticsPage = ({ village }) => {
   return (
     <div>
       <div className="canvasWrapper">
-        <GameCanvas village={village} />
+        <Canvas village={village} />
       </div>
       <VillageNamePanel name={village.villageName} />
       <div className="statisticsPage">
