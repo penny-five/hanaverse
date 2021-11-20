@@ -5,9 +5,9 @@ import Background from "./Background";
 
 const GameCanvas = () => {
   return (
-    <Stage width={window.innerWidth} height={window.innerHeight}>
+    <Stage width={450} height={450}>
       <Layer>
-        <Background widthInTiles={10} heightInTiles={10} tileWidthPx={64} tileHeightPx={64} />
+        <Background widthInTiles={14} heightInTiles={14} tileWidthPx={32} tileHeightPx={32} />
       </Layer>
     </Stage>
   );
