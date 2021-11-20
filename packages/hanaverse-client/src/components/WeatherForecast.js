@@ -30,13 +30,13 @@ const WeatherForecast = ({ weather }) => {
 
   return (
     <div className="weatherForecast">
-      <div class="iconWrapper">
+      <div className="iconWrapper">
         {weather === "BURNING_HOT" && <BurningHotIcon className="icon" />}
         {weather === "CLOUDY" && <CloudyIcon className="icon" />}
         {weather === "MILD_RAIN" && <MildRainIcon className="icon" />}
         {weather === "HEAVY_RAIN" && <HeavyRainIcon className="icon" />}
       </div>
-      <div class="textWrapper">
+      <div className="textWrapper">
         <h2>{label}</h2>
         <span>Until midnight</span>
       </div>
