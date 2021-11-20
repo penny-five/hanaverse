@@ -9,6 +9,7 @@ import GameCanvas from "./components/Canvas";
 import HananoidsPage from "./components/pages/Hananoids";
 import InfoPage from "./components/pages/Info";
 import StatisticsPage from "./components/pages/Statistics";
+import VillageNamePanel from "./components/VillageNamePanel";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("info");
@@ -32,6 +33,7 @@ function App() {
             <div className="canvasWrapper">
               <GameCanvas />
             </div>
+            <VillageNamePanel name="Yolo Village" />
             <div className="pageWrapper">
               {currentPage === "stats" && <StatisticsPage />}
               {currentPage === "hananoids" && <HananoidsPage />}

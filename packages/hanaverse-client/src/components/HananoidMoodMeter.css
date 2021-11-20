@@ -1,0 +1,31 @@
+.hananoidMoodMeter {
+  display: flex;
+  align-items: center;
+}
+
+
+
+.hananoidMoodMeter .gauge {
+  height: 24px;
+  width: 100%;
+  background: rgba(196, 196, 196, 0.5);
+  border: 2px solid var(--color-black-100);
+  border-radius: 11px;
+  margin: 0 10px;
+}
+
+.hananoidMoodMeter .gauge .bar {
+  flex-grow: 1;
+  height: 100%;
+
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 7px 0px 0px 7px;
+}
+
+.hananoidMoodMeter.poor .gauge .bar {
+  background: #FA5454;
+}
+
+.hananoidMoodMeter.good .gauge .bar {
+  background: #62DB66;
+}
