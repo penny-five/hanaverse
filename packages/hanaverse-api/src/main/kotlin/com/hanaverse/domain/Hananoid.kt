@@ -23,9 +23,8 @@ class Hananoid(
     var name: String? = null,
 
     @NotNull
-    @Enumerated(EnumType.STRING)
     @Column(length = 50, unique = true, nullable = false)
-    var color: HananoidColor? = null,
+    var color: String? = null,
 
     @NotNull
     @Column(length = 50, unique = true, nullable = false)

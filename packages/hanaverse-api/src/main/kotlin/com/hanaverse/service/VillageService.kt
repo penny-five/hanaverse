@@ -10,6 +10,7 @@ import com.hanaverse.repository.WaterConsumptionRepository
 import com.hanaverse.service.dto.DatasetDTO
 import com.hanaverse.service.dto.VillageDTO
 import com.hanaverse.service.dto.WaterConsumptionDTO
+import com.hanaverse.service.dto.batch.DatasetBatchDTO
 import com.hanaverse.service.enum.WeatherForecast
 import com.hanaverse.service.mapper.VillageMapper
 import org.slf4j.LoggerFactory
@@ -31,6 +32,20 @@ class VillageService(
 
     private val rand: Random = Random()
     private val log = LoggerFactory.getLogger(javaClass)
+
+    fun getVillages(): List<VillageDTO> {
+        val houses = houseRepository.findAll()
+        val villages = mutableListOf<VillageDTO>()
+        houses.forEach { house ->
+            val village = villageMapper.toDto(house)
+            val currentConsumption =
+                village.waterConsumptionHistory.find { it.date == LocalDate.now() }
+            village.hananoidHappiness = calculateHappiness(currentConsumption)
+            village.weatherForecast = calculateWeather(currentConsumption)
+            villages.add(village)
+        }
+        return villages
+    }
 
     fun getVillageStatus(id: Long): VillageDTO {
         val house = houseRepository.findById(id)
@@ -67,7 +82,7 @@ class VillageService(
     fun createVillage(villageDTO: VillageDTO): VillageDTO {
         val house = House(
             name = villageDTO.villageName,
-            residents = villageDTO.householdSize,
+            residents = villageDTO.householdSize
         )
         houseRepository.save(house)
 
@@ -79,6 +94,26 @@ class VillageService(
         village.weatherForecast = calculateWeather(currentConsumption)
 
         return village
+    }
+
+    fun uploadData(datasetBatchDTO: DatasetBatchDTO) {
+        val id = 1
+        datasetBatchDTO.houses.forEach { house ->
+            house.apartments.forEach { apartment ->
+                val newHouse = House(
+                    name = "house$id",
+                    residents = apartment.people
+                )
+                houseRepository.save(newHouse)
+
+                for (i in 1..apartment.people) {
+                    newHouse.hananoids.add(createHananoid(newHouse))
+                }
+
+                val dishwasher = apartment.Dishwasher.measurements.groupBy { it.TimeStamp }
+                val asdf = apartment.Hydractiva_shower.measurements.groupBy { it.TimeStamp }
+            }
+        }
     }
 
     private fun calculateHappiness(waterConsumption: WaterConsumptionDTO?): Double {
@@ -118,7 +153,7 @@ class VillageService(
     private fun createHananoid(house: House): Hananoid {
         val hananoid = Hananoid(
             name = generateName(),
-            color = HananoidColor.values()[rand.nextInt(HananoidColor.values().size)],
+            color = HananoidColor.values()[rand.nextInt(HananoidColor.values().size)].toString(),
             created = LocalDateTime.now(),
             house = house
         )
