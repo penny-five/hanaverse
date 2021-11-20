@@ -13,7 +13,7 @@ export const generateRandomCoordinates = (gridWidth, gridHeight, objectWidth, ob
   };
 };
 
-const areCoordinatesOverlapping = (grid, newCoordinates, objectWidth, objectHeight) => {
+const areCoordinatesOverlapping = (grid, newCoordinates) => {
   if (
     grid.includes(newCoordinates) ||
     grid.includes({ x: newCoordinates.x + 1, y: newCoordinates.y }) ||
@@ -22,18 +22,6 @@ const areCoordinatesOverlapping = (grid, newCoordinates, objectWidth, objectHeig
   )
     return true;
   else return false;
-};
-
-export const generatePropLocations = (hananoidCount, gridWidth, gridHeight) => {
-  const locations = Array(Math.round(Math.random() * hananoidCount > 5 ? 5 : hananoidCount))
-    .fill()
-    .map((_element, _index, array) => {
-      let newCoordinates = generateRandomCoordinates(gridWidth, gridHeight, 2, 2);
-      while (areCoordinatesOverlapping(array, newCoordinates, 2, 2))
-        newCoordinates = generateRandomCoordinates(gridWidth, gridHeight, 2, 2);
-      return newCoordinates;
-    });
-  return locations;
 };
 
 export const generateHananoidLocations = (grid, hananoids, gridWidth, gridHeight) => {
