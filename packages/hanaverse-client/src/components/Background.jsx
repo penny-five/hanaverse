@@ -1,23 +1,27 @@
 import React from "react";
-import LoadingImage from "./LoadingImage";
 
 import Tile from "./Tile";
-import useImage from "use-image";
+
+import grass from "../resources/grass.png";
+import puddle from "../resources/puddle.png";
 
 const TILETYPES = ["grass", "puddle"];
 
 const Background = (props) => {
   const {widthInTiles, heightInTiles, tileWidthPx, tileHeightPx} = props;
 
-  const grass = <LoadingImage url={`${process.env.PUBLIC_URL + '/tiles/grass.png'}`} />;
-  const puddle = <LoadingImage url={`${process.env.PUBLIC_URL + '/tiles/puddle.png'}`} />;
+  // const grass = <LoadingImage url={`${process.env.PUBLIC_URL + '/tiles/grass.png'}`} />;
+  // const puddle = <LoadingImage url={`${process.env.PUBLIC_URL + '/tiles/puddle.png'}`} />;
 
   const resolveTileImage = (tileType) => {
+    let image = new Image();
     switch (tileType) {
       case "grass":
-        return grass;
+        image.src = grass;
+        return image;
       case "puddle":
-        return puddle;
+        image.src = puddle;
+        return image;
       default:
         throw Error("Unknown tile type ", tileType);
     }
