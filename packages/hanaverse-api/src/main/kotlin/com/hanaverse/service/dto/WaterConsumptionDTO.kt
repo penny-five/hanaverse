@@ -5,5 +5,5 @@ import java.time.LocalDate
 open class WaterConsumptionDTO(
     var date: LocalDate? = null,
 
-    var liters: Int? = null
+    var liters: Double? = null
 )
