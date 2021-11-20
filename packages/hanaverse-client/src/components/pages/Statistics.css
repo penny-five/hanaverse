@@ -3,9 +3,20 @@
   flex-direction: column;
   justify-content: stretch;
   width: 100%;
-  padding: 10px 20px;
+  padding: 10px 20px 20px;
 }
 
-.statisticsPage .title:not(:first-of-type) {
-  margin-top: 30px;
+
+.statisticsPage .headerWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.statisticsPage .headerWrapper h2 {
+  flex-grow: 1;
+}
+
+.statisticsPage .headerWrapper:not(:first-of-type) {
+  margin-top: 20px;
 }

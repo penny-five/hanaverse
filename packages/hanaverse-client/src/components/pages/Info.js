@@ -5,7 +5,7 @@ import "./Info.css";
 const InfoPage = () => {
   return (
     <div className="infoPage">
-      <h1>About Hana Village</h1>
+      <h1>About HanaWorld</h1>
       <h2>Hananoids</h2>
       <p>
         The Hananoids are known for their rain droplet shape, round eyes, and goofy, toothless
@@ -14,9 +14,9 @@ const InfoPage = () => {
       </p>
       <h2>Hana Village</h2>
       <p>
-        This is the town where Hananoids live. Ideally, the Hana Village is surrounded with fertile
-        grass. Plentiful rain throughout the whole year in the village makes it a place full of
-        lakes and rivers. Hananoids are good at swimming and cultivating the land.
+        This is the town where your Hananoids live. Ideally, the Hana Village is surrounded with
+        fertile grass. Plentiful rain throughout the whole year in the village makes it a place full
+        of lakes and rivers. Hananoids are good at swimming and cultivating the land.
       </p>
       <h2>Water consumption</h2>
       <p>
