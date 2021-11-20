@@ -1,0 +1,10 @@
+import { Image } from "react-konva";
+import React from "react";
+
+const Tile = (props) => {
+  const { x, y, width, height, image } = props;
+  console.log("image", x, y, width, height, image);
+  return <Image x={x * width} y={y * height} width={width} height={height} image={image} />;
+};
+
+export default Tile;
