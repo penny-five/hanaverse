@@ -1,7 +1,8 @@
-import { Canvas } from "konva/lib/Canvas";
 import "marvel-devices.css/assets/devices.min.css";
+import { Chart } from "chart.js";
+import annotationPlugin from "chartjs-plugin-annotation";
+
 import { useState } from "react";
-import { Layer } from "react-konva";
 
 import "./App.css";
 import BottomNavBar from "./components/BottomNavbar";
@@ -10,6 +11,8 @@ import HananoidsPage from "./components/pages/Hananoids";
 import InfoPage from "./components/pages/Info";
 import StatisticsPage from "./components/pages/Statistics";
 import VillageNamePanel from "./components/VillageNamePanel";
+
+Chart.register(annotationPlugin);
 
 function App() {
   const [currentPage, setCurrentPage] = useState("info");

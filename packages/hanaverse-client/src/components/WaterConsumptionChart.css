@@ -1,0 +1,7 @@
+.waterConsumptionChart {
+  background: rgba(196, 196, 196, 0.34);
+  border: 2px solid var(--color-black-100);
+  box-shadow: inset 0px 10px 6px rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 7px;
+}
