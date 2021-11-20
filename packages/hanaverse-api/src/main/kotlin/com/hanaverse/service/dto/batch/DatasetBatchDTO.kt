@@ -1,5 +1,5 @@
 package com.hanaverse.service.dto.batch
 
 open class DatasetBatchDTO(
-    var houses: List<HouseDTO>
+    var houses: List<HouseDTO> = listOf()
 )

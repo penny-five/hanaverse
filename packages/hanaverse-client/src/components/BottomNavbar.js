@@ -5,8 +5,9 @@ import "./BottomNavbar.css";
 import { ReactComponent as InfoLogo } from "../resources/navbar-info.svg";
 import { ReactComponent as HananoidsLogo } from "../resources/navbar-hananoids.svg";
 import { ReactComponent as StatsLogo } from "../resources/navbar-stats.svg";
+import Badge from "./Badge";
 
-const BottomNavBar = ({ currentPage, onSelect }) => {
+const BottomNavBar = ({ currentPage, onSelect, village }) => {
   return (
     <nav className="bottomNavbar">
       <ul className="itemWrapper">
@@ -27,6 +28,9 @@ const BottomNavBar = ({ currentPage, onSelect }) => {
           onClick={() => onSelect("hananoids")}
         >
           <HananoidsLogo />
+          <div className="hananoidBadge">
+            <Badge label={village.hananoids.length} />
+          </div>
         </li>
         <li
           className={classNames({

@@ -7,18 +7,23 @@ import "./WaterConsumptionChart.css";
 const OPTIMAL_WATER_LEVEL = 200;
 
 const WaterConsumptionChart = ({ measurements }) => {
+  const sortedMeasurements = measurements.sort(
+    (first, second) =>
+      dateFns.parseISO(first.date).getTime() - dateFns.parseISO(second.date).getTime()
+  );
+
   const data = {
-    labels: measurements
+    labels: sortedMeasurements
       .map((measurement) => measurement.date)
       .map((date) => dateFns.format(dateFns.parseISO(date), "EEEE")),
     datasets: [
       {
         label: "Water consumption",
-        data: measurements.map((measurement) => measurement.liters),
+        data: sortedMeasurements.map((measurement) => measurement.liters),
         borderColor: "#302D43",
         borderWidth: 2,
         pointBorderColor: "#302D43",
-        pointBackgroundColor: measurements.map((measurement) =>
+        pointBackgroundColor: sortedMeasurements.map((measurement) =>
           measurement.liters > OPTIMAL_WATER_LEVEL ? "#E44242" : "white"
         ),
         pointRadius: 5,

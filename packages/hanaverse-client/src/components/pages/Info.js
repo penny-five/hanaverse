@@ -8,8 +8,8 @@ const InfoPage = () => {
       <h1>About HanaWorld</h1>
       <h2>Hananoids</h2>
       <p>
-        The Hananoids are known for their rain droplet shape, round eyes, and goofy, toothless
-        smile. Hananoids love water and nature that water grows around them, and also art, music and
+        Hananoids are known for their rain droplet shape, round eyes, and goofy, toothless smile.
+        Hananoids love water and nature that water grows around them, and also art, music and
         poetry, and all the good things of the world.
       </p>
       <h2>Hana Village</h2>

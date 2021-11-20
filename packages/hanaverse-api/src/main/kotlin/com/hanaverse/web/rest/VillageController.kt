@@ -38,6 +38,12 @@ class VillageController(private val villageService: VillageService) {
         )
     }
 
+    @PostMapping("/{id}/hananoid")
+    fun createHananoid(@PathVariable id: Long): ResponseEntity<VillageDTO> {
+        villageService.createHananoid(id)
+        return ResponseEntity.ok().build()
+    }
+
     @PostMapping("/batch")
     fun uploadData(@RequestBody datasetBatchDTO: DatasetBatchDTO): ResponseEntity<Void> {
         villageService.uploadData(datasetBatchDTO)
