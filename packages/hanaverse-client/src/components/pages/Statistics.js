@@ -1,5 +1,5 @@
 import React from "react";
-import GameCanvas from "../Canvas";
+import GameCanvas from "../GameCanvas";
 import HananoidMoodMeter from "../HananoidMoodMeter";
 import VillageNamePanel from "../VillageNamePanel";
 import WaterConsumptionChart from "../WaterConsumptionChart";
@@ -30,7 +30,7 @@ const StatisticsPage = ({ village }) => {
   return (
     <div>
       <div className="canvasWrapper">
-        <GameCanvas />
+        <GameCanvas village={village} />
       </div>
       <VillageNamePanel name={village.villageName} />
       <div className="statisticsPage">

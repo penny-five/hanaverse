@@ -1,11 +1,10 @@
 import { useRef, useState, useEffect } from "react";
-import { Image, Sprite } from "react-konva";
+import { Sprite } from "react-konva";
 
 const HANANOID_COLORS = ["blue", "green", "orange", "red"];
-
 const HANANOID_MOODS = ["happy", "sad"];
 
-const CanvasHananoid = (props) => {
+const CanvasHananoid = ({ color, happy }) => {
   const [x, setX] = useState(Math.round(Math.random() * 13) * 32);
   const [y, setY] = useState(Math.round(Math.random() * 13) * 32);
   const spriteRef = useRef(null);
