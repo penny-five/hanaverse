@@ -1,12 +1,8 @@
-import React from "react";
+import { React, useMemo } from "react";
 import { Stage, Layer } from "react-konva";
 
 import Background from "./Background";
-import {
-  generatePropLocations,
-  generateHananoidLocations,
-  scaleLocationsToCoordinates,
-} from "../../utils/canvas";
+import { generatePropLocations, generateHananoidLocations } from "../../utils/canvas";
 import Hananoids from "./Hananoids";
 import Props from "./Props";
 
@@ -15,21 +11,15 @@ const GRID_HEIGHT = 14;
 const TILE_SIZE = 32;
 
 const Canvas = ({ village }) => {
-  const propLocations = generatePropLocations(village.hananoids.length, GRID_WIDTH, GRID_HEIGHT);
-  const hananoidLocations = generateHananoidLocations(
-    propLocations,
-    village.hananoids,
-    GRID_WIDTH,
-    GRID_HEIGHT
+  const propLocations = useMemo(
+    () => generatePropLocations(village.hananoids.length, GRID_WIDTH, GRID_HEIGHT),
+    [village]
   );
-  console.log(propLocations, hananoidLocations);
-  const propCoordinates = propLocations.map((location) => {
-    return scaleLocationsToCoordinates(location, TILE_SIZE);
-  });
-  const hananoidCoordinates = hananoidLocations.map((location) => {
-    return scaleLocationsToCoordinates(location, TILE_SIZE);
-  });
-  console.log(propCoordinates, hananoidCoordinates);
+
+  const hananoidLocations = useMemo(
+    () => generateHananoidLocations(propLocations, village.hananoids, GRID_WIDTH, GRID_HEIGHT),
+    [village, propLocations]
+  );
 
   return (
     <Stage width={448} height={448}>
@@ -43,12 +33,12 @@ const Canvas = ({ village }) => {
         />
       </Layer>
       <Layer>
-        <Props coordinates={propCoordinates} />
+        <Props coordinates={propLocations} />
       </Layer>
       <Layer>
         <Hananoids
           hananoids={village.hananoids}
-          coordinates={hananoidCoordinates}
+          coordinates={hananoidLocations}
           happy={village.hananoidHappiness >= 0.5 ? true : false}
         />
       </Layer>
