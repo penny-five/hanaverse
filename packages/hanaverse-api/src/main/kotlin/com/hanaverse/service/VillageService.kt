@@ -23,7 +23,7 @@ import java.util.*
 import javax.persistence.EntityNotFoundException
 
 
-private const val DAILY_LIMIT_PER_PERSON = 30
+private const val DAILY_LIMIT_PER_PERSON = 200
 
 @Service
 @Transactional
