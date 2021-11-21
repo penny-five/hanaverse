@@ -4,7 +4,7 @@ import { Sprite } from "react-konva";
 const Hananoid = ({ color, happy, location }) => {
   const spriteRef = useRef(null);
 
-    if (color === "YELLOW") {
+  if (color === "YELLOW") {
     color = "ORANGE"; // kiitos Arttu
   }
 
@@ -23,8 +23,8 @@ const Hananoid = ({ color, happy, location }) => {
   return (
     <Sprite
       ref={spriteRef}
-      x={location.x}
-      y={location.y}
+      x={location.x * 32}
+      y={location.y * 32}
       image={resolveImage()}
       animation="bouncing"
       animations={{
